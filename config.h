@@ -23,10 +23,11 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const char col_red[]         = "#f07178";
+static const char col_green[]         = "#2ECC71";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_red },
+	[SchemeSel]  = { col_gray4, col_cyan,  col_green },
 };
 
 /* tagging */
@@ -76,6 +77,8 @@ static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%"
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 static const char *lockscreen[] = { "gnome-screensaver-command", "--lock", NULL };
+static const char *powermenu[] = { "/home/mykha/dwm/scripts/powermenu.sh", NULL };
+static const char *change_layout[] = { "/home/mykha/dwm/scripts/toggle_layout.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -124,6 +127,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F11, spawn, {.v = downvol } },
 	{ MODKEY,                       XK_F9,  spawn, {.v = mutevol } },
 	{ MODKEY,                       XK_F12, spawn, {.v = upvol   } },
+
+
+	{ MODKEY|ShiftMask,                       XK_p,      spawn,          {.v = powermenu} },
+	{ MODKEY|ShiftMask,                       XK_BackSpace,      spawn,          {.v = change_layout} },
 };
 
 /* button definitions */
